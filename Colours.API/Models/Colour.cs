@@ -1,10 +1,9 @@
-﻿namespace Colours.API;
+﻿namespace Colours.API.Models;
 
-public class ColourModel
+public class Colour
 {
     public int Id { get; set; }
     public string Name { get; set; }
     public string Code { get; set; }
     public string Description { get; set; }
-
 }
