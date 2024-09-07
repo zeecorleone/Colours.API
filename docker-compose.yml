@@ -1,0 +1,31 @@
+version: '3.8'
+
+services:
+  api:
+    image: modulez33/colours-api:2.0.0
+    environment:
+        - ASPNETCORE_ENVIRONMENT=Development
+        - ASPNETCORE_URLS=http://+:5000
+        - ConnectionStrings__Default=User ID=postgres;Password=123456;Server=postgres;Port=5432;Database=coloursdb;Pooling=true;
+        - Redis__Host=redis
+        - Redis__Port=6379
+    ports:
+        - "5000:5000"
+        - "5001:5001"
+    depends_on:
+        - postgres
+        - redis
+
+  postgres:
+    image: postgres:latest
+    environment:
+        POSTGRES_USER: postgres
+        POSTGRES_PASSWORD: 123456
+        POSTGRES_DB: coloursdb
+    ports:
+        - "5432:5432"
+
+  redis:
+    image: redis:latest
+    ports:
+        - "6379:6379"
