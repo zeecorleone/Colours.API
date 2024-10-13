@@ -2,7 +2,7 @@ version: '3.8'
 
 services:
   api:
-    image: modulez33/colours-api:2.0.0
+    image: modulez33/colours-api:3.0.0
     environment:
         - ASPNETCORE_ENVIRONMENT=Development
         - ASPNETCORE_URLS=http://+:5000
