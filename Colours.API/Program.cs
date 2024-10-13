@@ -37,6 +37,21 @@ using (var scope = app.Services.CreateScope())
     }
 }
 
+var logFilePath = Path.Combine("/app/logs", "app.log");
+var logDirectory = Path.GetDirectoryName(logFilePath);
+if (!Directory.Exists(logDirectory))
+    Directory.CreateDirectory(logDirectory!);
+
+app.Use(async (context, next) =>
+{
+    if (!context.Request.Path.StartsWithSegments("/swagger"))
+    {
+        var logEntry = $"{DateTime.Now}: {context.Request.Method} {context.Request.Path}";
+        await File.AppendAllTextAsync(logFilePath, logEntry + " \n\n");
+    }
+    await next();
+});
+
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {

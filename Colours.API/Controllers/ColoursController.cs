@@ -93,6 +93,15 @@ namespace Colours.API.Controllers
             return NoContent();
         }
 
+        [HttpGet("logs")]
+        public async Task<IActionResult> Logs()
+        {
+            var logFilePath = Path.Combine("/app/logs", "app.log");
+            var allLogs = await System.IO.File.ReadAllTextAsync(logFilePath);
+            return Ok(allLogs);
+        }
+
+
 
         private List<ColourModel> GetColoursModel(IEnumerable<Colour> colours)
         {
