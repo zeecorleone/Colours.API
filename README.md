@@ -19,7 +19,7 @@ Part 1: Containerize .NET 8.0 Web API
 https://medium.com/@zeeshan.mustafa91/dockerize-net-8-0-web-api-cbb4b8426fdb
 
 Part 2: Multi-Container Setup for .NET 8.0 Web API with PostgreSQL and Redis
-*Coming soon*
+https://medium.com/@zeeshan.mustafa91/docker-multi-container-setup-for-net-8-0-web-api-with-postgresql-and-redis-5147f1-5147f1f269cd
 
 Part 3: *Coming soon*
 
