@@ -86,13 +86,15 @@ version: '3.8'
 
 services:
   api:
-    image: modulez33/colours-api:2.0.0
+    image: modulez33/colours-api:3.0.0
     environment:
         - ASPNETCORE_ENVIRONMENT=Development
         - ASPNETCORE_URLS=http://+:5000
         - ConnectionStrings__Default=User ID=postgres;Password=123456;Server=postgres;Port=5432;Database=coloursdb;Pooling=true;
         - Redis__Host=redis
         - Redis__Port=6379
+    volumes:
+        - colours_api_logs_data:/app/logs 
     ports:
         - "5000:5000"
         - "5001:5001"
@@ -113,6 +115,9 @@ services:
     image: redis:latest
     ports:
         - "6379:6379"
+
+volumes:
+  colours_api_logs_data: {}
 ```
 
 ### Running Containers
