@@ -19,9 +19,10 @@ Part 1: Containerize .NET 8.0 Web API
 https://medium.com/@zeeshan.mustafa91/dockerize-net-8-0-web-api-cbb4b8426fdb
 
 Part 2: Multi-Container Setup for .NET 8.0 Web API with PostgreSQL and Redis
-*Coming soon*
+https://medium.com/@zeeshan.mustafa91/docker-multi-container-setup-for-net-8-0-web-api-with-postgresql-and-redis-5147f1-5147f1f269cd
 
-Part 3: *Coming soon*
+Part 3: Using Volumes to Persist Logs in a Multi-Container .NET 8.0 Web API
+*Coming soon*
 
 ## Getting Started
 
@@ -85,13 +86,15 @@ version: '3.8'
 
 services:
   api:
-    image: modulez33/colours-api:2.0.0
+    image: modulez33/colours-api:3.0.0
     environment:
         - ASPNETCORE_ENVIRONMENT=Development
         - ASPNETCORE_URLS=http://+:5000
         - ConnectionStrings__Default=User ID=postgres;Password=123456;Server=postgres;Port=5432;Database=coloursdb;Pooling=true;
         - Redis__Host=redis
         - Redis__Port=6379
+    volumes:
+        - colours_api_logs_data:/app/logs 
     ports:
         - "5000:5000"
         - "5001:5001"
@@ -112,6 +115,9 @@ services:
     image: redis:latest
     ports:
         - "6379:6379"
+
+volumes:
+  colours_api_logs_data: {}
 ```
 
 ### Running Containers
