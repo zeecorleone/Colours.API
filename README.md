@@ -21,8 +21,11 @@ https://medium.com/@zeeshan.mustafa91/dockerize-net-8-0-web-api-cbb4b8426fdb
 Part 2: Multi-Container Setup for .NET 8.0 Web API with PostgreSQL and Redis
 https://medium.com/@zeeshan.mustafa91/docker-multi-container-setup-for-net-8-0-web-api-with-postgresql-and-redis-5147f1-5147f1f269cd
 
-Part 3: Using Volumes to Persist Logs in a Multi-Container .NET 8.0 Web API
-*Coming soon*
+Part 3: Using Volumes to Persist Data in a Multi-Container .NET 8.0 Web API
+https://medium.com/@zeeshan.mustafa91/docker-volumes-to-persist-logs-in-multi-container-net-8-0-web-api-bd5880971b17
+
+Part 4: Running a .NET 8.0 Web API over HTTPS Inside Docker
+https://medium.com/@zeeshan.mustafa91/api-over-https-inside-docker-04dc0916e790
 
 ## Getting Started
 
@@ -89,12 +92,15 @@ services:
     image: modulez33/colours-api:3.0.0
     environment:
         - ASPNETCORE_ENVIRONMENT=Development
-        - ASPNETCORE_URLS=http://+:5000
+        - ASPNETCORE_URLS=http://+:5000;https://+:5001
+        - ASPNETCORE_Kestrel__Certificates__Default__Path=/https/colours-api-cert.pfx
+        - ASPNETCORE_Kestrel__Certificates__Default__Password=123456
         - ConnectionStrings__Default=User ID=postgres;Password=123456;Server=postgres;Port=5432;Database=coloursdb;Pooling=true;
         - Redis__Host=redis
         - Redis__Port=6379
     volumes:
-        - colours_api_logs_data:/app/logs 
+        - colours_api_logs_data:/app/logs
+        - D:/temp-certs/:/https/
     ports:
         - "5000:5000"
         - "5001:5001"
