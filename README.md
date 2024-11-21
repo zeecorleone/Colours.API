@@ -16,15 +16,22 @@ This API is part of a series of articles I've written on Medium discussing **Doc
 
 ### Articles Links:
 Part 1: Containerize .NET 8.0 Web API
+
 https://medium.com/@zeeshan.mustafa91/dockerize-net-8-0-web-api-cbb4b8426fdb
 
+
 Part 2: Multi-Container Setup for .NET 8.0 Web API with PostgreSQL and Redis
+
 https://medium.com/@zeeshan.mustafa91/docker-multi-container-setup-for-net-8-0-web-api-with-postgresql-and-redis-5147f1-5147f1f269cd
 
+
 Part 3: Using Volumes to Persist Data in a Multi-Container .NET 8.0 Web API
+
 https://medium.com/@zeeshan.mustafa91/docker-volumes-to-persist-logs-in-multi-container-net-8-0-web-api-bd5880971b17
 
+
 Part 4: Running a .NET 8.0 Web API over HTTPS Inside Docker
+
 https://medium.com/@zeeshan.mustafa91/api-over-https-inside-docker-04dc0916e790
 
 ## Getting Started
